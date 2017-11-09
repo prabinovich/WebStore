@@ -19,7 +19,7 @@ node ('CAST-Analysis-Server') {
 }
 
 node ('Build-Deploy-Box') {
-    stage ('CAST Analysis') {
+    stage ('Build Application') {
            git credentialsId: 'Github-prabinovich', url: 'https://github.com/prabinovich/WebStore.git'
     }
 }
