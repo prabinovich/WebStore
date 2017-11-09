@@ -1,10 +1,10 @@
 node ('CAST-Analysis-Server') {
     stage ('CAST Analysis') {
         dir ('CAST-Jenkins-Pipeline') {
-           git credentialsId: '6fca6e6a-2db0-4c2d-abec-513591c993e7', url: 'https://github.com/prabinovich/CAST-Jenkins-Pipeline.git'
+           git credentialsId: 'Github-prabinovich', url: 'https://github.com/prabinovich/CAST-Jenkins-Pipeline.git'
         }
         dir('Webstore') {
-           git credentialsId: '6fca6e6a-2db0-4c2d-abec-513591c993e7', url: 'https://github.com/prabinovich/WebStore.git'
+           git credentialsId: 'Github-prabinovich', url: 'https://github.com/prabinovich/WebStore.git'
         }
 
         echo '-- Packaging and Delivery of Source Code --'
