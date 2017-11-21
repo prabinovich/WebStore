@@ -48,7 +48,8 @@ public class UpdateCartServlet extends HttpServlet {
 		for(int i=0 ; i<toRemove.size(); i++) {
 			cart.removeProduct(toRemove.get(i));
 		}
-		request.getRequestDispatcher("/QuizDescriptionServlet").forward(request,response);
+		//request.getRequestDispatcher("/QuizDescriptionServlet").forward(request,response);
+		request.getRequestDispatcher("cart.jsp").forward(request,response);
 	}
 
 }
