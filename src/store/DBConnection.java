@@ -41,6 +41,10 @@ public class DBConnection {
 		}
 		catch (ClassNotFoundException e) {
 			e.printStackTrace();
+			
+			Logger logger = Logger.getLogger(this.getClass());
+			BasicConfigurator.configure();
+			logger.error(e.toString());
 		}
 		
 		return rs;

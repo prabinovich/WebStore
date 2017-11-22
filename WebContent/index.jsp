@@ -7,7 +7,7 @@
 <title>Webstore</title>
 </head>
 <body>
-<h1>Welcome to webstore v1.0</h1>
+<h1>Welcome to webstore v1.1</h1>
 <p>
 <a href="store.jsp">Start shopping</a>
 </body>

@@ -1,6 +1,6 @@
 node ('CAST-Analysis-Server') {
     stage ('CAST Analysis') {
-        dir ('CAST-Jenkins-Pipeline') {
+        dir ('CAST-CLI2') {
            git credentialsId: 'Github-prabinovich', url: 'https://github.com/prabinovich/CAST-Jenkins-Pipeline.git'
         }
         dir('Webstore') {
@@ -18,14 +18,14 @@ node ('CAST-Analysis-Server') {
     }
 }
 
+/*
 node ('Build-Deploy-Box') {
     stage ('Build Application') {
            git credentialsId: 'Github-prabinovich', url: 'https://github.com/prabinovich/WebStore.git'
            sh 'javac ./src/store/*.java -classpath "/usr/share/tomcat7/lib/servlet-api.jar" -d build/classes'
     }
 }
-
-node ('Build-
+*/
 
 /*
 node ('Docker-Build-Box') {
