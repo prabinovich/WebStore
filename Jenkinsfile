@@ -27,16 +27,16 @@ node ('Build-Deploy-Box') {
           }
     stage ('Package Application'){
 			   // Organize web project
-			   sh 'rm -rf Deploy'
-			   sh 'mkdir Deploy'
+			   sh 'rm -rf ./Deploy'
+			   sh 'mkdir ./Deploy'
 			   sh 'mkdir ./Deploy/Package'
-			   sh 'cp -r WebContent/* ./Deploy/Package'
+			   sh 'cp -r ./WebContent/* ./Deploy/Package'
 			   sh 'cp -r ./build/* ./Deploy/Package/WEB-INF/'
 			   sh 'mkdir ./Deploy/Package/WEB-INF/lib'
 			   sh 'cp -r ./libs/* ./Deploy/Package/WEB-INF/lib'
 	   
 			   // Create WAR deployment package
-			   sh 'jar -cvf ./Deploy/Webstore.war ./Deploy/Package/*'   
+			   sh 'cd ./Deploy/Package; jar -cvf ../Webstore.war *'
           }
 	stage ('Deploy Application'){
 			   sh 'sudo cp -f ./Deploy/Webstore.war /var/lib/tomcat7/webapps'
