@@ -39,7 +39,7 @@ node ('Build-Deploy-Box') {
 			   sh 'jar -cvf ./Deploy/Webstore.war ./Deploy/Package/*'   
           }
 	stage ('Deploy Application'){
-			   sh 'cp -f ./Deploy/Webstore.war /var/lib/tomcat7/webapps'
+			   sh 'sudo cp -f ./Deploy/Webstore.war /var/lib/tomcat7/webapps'
 	      }
 
 }
