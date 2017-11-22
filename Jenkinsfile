@@ -1,6 +1,6 @@
 node ('CAST-Analysis-Server') {
     stage ('CAST Analysis') {
-        dir ('CAST-CLI2') {
+        dir ('CAST-CLI') {
            git credentialsId: 'Github-prabinovich', url: 'https://github.com/prabinovich/CAST-Jenkins-Pipeline.git'
         }
         dir('Webstore') {
