@@ -1,4 +1,4 @@
-node ('CAST-Analysis-Server') {
+/*node ('CAST-Analysis-Server') {
     stage ('CAST Analysis') {
         dir ('CAST-CLI') {
            git credentialsId: 'Github-prabinovich', url: 'https://github.com/prabinovich/CAST-Jenkins-Pipeline.git'
@@ -16,16 +16,16 @@ node ('CAST-Analysis-Server') {
         echo '-- Generate Snapshot --'
         //bat '%WORKSPACE%\\CLI-Scripts\\CMS_GenerateSnapshot.bat "profile=sandbox802" "app=SmallFibonacci" "version=version %BUILD_NUMBER%"'
     }
-}
+}*/
 
-/*
+
 node ('Build-Deploy-Box') {
     stage ('Build Application') {
            git credentialsId: 'Github-prabinovich', url: 'https://github.com/prabinovich/WebStore.git'
            sh 'javac ./src/store/*.java -classpath "/usr/share/tomcat7/lib/servlet-api.jar" -d build/classes'
     }
 }
-*/
+
 
 /*
 node ('Docker-Build-Box') {
