@@ -36,10 +36,11 @@ node ('Build-Deploy-Box') {
 			   sh 'cp -r ./libs/* ./Deploy/Package/WEB-INF/lib'
 	   
 			   // Create WAR deployment package
-			   sh 'cd ./Deploy/Package; jar -cvf ../Webstore.war *'
+			   sh 'cd ./Deploy/Package; jar -cvf ../WebStore.war *'
           }
 	stage ('Deploy Application'){
-			   sh 'sudo cp -f ./Deploy/Webstore.war /var/lib/tomcat7/webapps'
+			   sh 'sudo rm -f /var/lib/tomcat7/webapps/WebStore.war'
+			   sh 'sudo cp -f ./Deploy/WebStore.war /var/lib/tomcat7/webapps'
 	      }
 	stage ('Deploy Database'){
 	          sh 'mysqladmin --defaults-file=~/.my.cnf -u root flush-logs drop -f webstore || true'
