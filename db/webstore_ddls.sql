@@ -1,4 +1,4 @@
-CREATE DATABASE `webstore` /*!40100 DEFAULT CHARACTER SET utf8 */;
+--CREATE DATABASE `webstore` /*!40100 DEFAULT CHARACTER SET utf8 */;
 CREATE TABLE `products` (
   `productid` int(11) NOT NULL,
   `name` varchar(100) DEFAULT NULL,
