@@ -42,7 +42,8 @@ node ('Build-Deploy-Box') {
 			   sh 'sudo cp -f ./Deploy/Webstore.war /var/lib/tomcat7/webapps'
 	      }
 	stage ('Deploy Database'){
-	          sh 'mysqladmin --defaults-file=~/.my.cnf -u root flush-hosts drop -f webstore'
+	          sh 'mysqladmin --defaults-file=~/.my.cnf -u root flush-hosts drop -f webstore  || true'
+	          sh 'sleep 3 seconds'
 	          sh 'mysqladmin --defaults-file=~/.my.cnf -u root flush-hosts create webstore'
 	          sh 'mysql -u root webstore < ./db/webstore_ddls.sql'
 	          sh 'mysql -u root webstore < ./db/webstore_data.sql'
