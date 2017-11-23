@@ -42,7 +42,7 @@ node ('Build-Deploy-Box') {
 			   sh 'sudo cp -f ./Deploy/Webstore.war /var/lib/tomcat7/webapps'
 	      }
 	stage ('Deploy Database'){
-	          sh 'mysqladmin --defaults-file=~/.my.cnf -u root drop webstore'
+	          sh 'mysqladmin --defaults-file=~/.my.cnf -u root drop database -f webstore'
 	          sh 'mysqladmin --defaults-file=~/.my.cnf -u root create webstore'
 	          sh 'mysql -u root webstore < ./db/webstore_ddls.sql'
 	          sh 'mysql -u root webstore < ./db/webstore_data.sql'
