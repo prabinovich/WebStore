@@ -11,7 +11,7 @@ import org.apache.log4j.Logger;
 public class DBConnection {
 	
 	private static String account = "appuser"; 
-	private static String password = "password"; 
+	private static String password = "Password1234%"; 
 	private static String server = "localhost:3306";
 	private static String database = "webstore"; 
 	
