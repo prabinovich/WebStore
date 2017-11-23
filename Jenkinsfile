@@ -41,6 +41,15 @@ node ('Build-Deploy-Box') {
 	stage ('Deploy Application'){
 			   sh 'sudo cp -f ./Deploy/Webstore.war /var/lib/tomcat7/webapps'
 	      }
+	stage ('Deploy Database'){
+	          sh 'mysqladmin --defaults-file=~/.my.cnf -u root drop webstore'
+	          sh 'mysqladmin --defaults-file=~/.my.cnf -u root create webstore'
+	          sh 'mysql -u root webstore < ./db/webstore_ddls.sql'
+	          sh 'mysql -u root webstore < ./db/webstore_data.sql'
+	          // Create application user
+	          sh 'mysql -u root webstore -e "create user appuser@localhost identified by Password1234%"'
+	          sh 'mysql -u root webstore -e "grant all privileges on webstore.* to appuser@localhost"'
+	      }
 
 }
 
