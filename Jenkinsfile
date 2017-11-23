@@ -43,7 +43,7 @@ node ('Build-Deploy-Box') {
 	      }
 	stage ('Deploy Database'){
 	          sh 'mysqladmin --defaults-file=~/.my.cnf -u root flush-hosts drop -f webstore  || true'
-	          sh 'sleep 3 seconds'
+	          sh 'sleep 3'
 	          sh 'mysqladmin --defaults-file=~/.my.cnf -u root flush-hosts create webstore'
 	          sh 'mysql -u root webstore < ./db/webstore_ddls.sql'
 	          sh 'mysql -u root webstore < ./db/webstore_data.sql'
