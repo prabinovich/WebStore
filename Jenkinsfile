@@ -48,6 +48,7 @@ node ('Build-Deploy-Box') {
 	          sh 'mysql -u root webstore -e "use webstore; SET autocommit=0 ; source ./db/webstore_ddls.sql ; COMMIT;"'
 	          sh 'mysql -u root webstore -e "use webstore; SET autocommit=0 ; source ./db/webstore_data.sql ; COMMIT;"'
 	          // Create application user
+	          sh 'mysql -u root webstore -e "drop user if exists \'appuser\'@\'localhost\'"'
 	          sh 'mysql -u root webstore -e "create user \'appuser\'@\'localhost\' identified by \'Password1234%\'"'
 	          sh 'mysql -u root webstore -e "grant all privileges on webstore.* to appuser@localhost"'
 	      }
