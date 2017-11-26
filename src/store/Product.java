@@ -14,7 +14,7 @@ public class Product {
 		this.price = price;
 	}
 	
-	public xString getID() {
+	public String getID() {
 		return id;
 	}
 	
