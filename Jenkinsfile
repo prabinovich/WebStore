@@ -1,30 +1,33 @@
-/*node ('CAST-Analysis-Server') {
-    stage ('CAST Analysis') {
-        dir ('CAST-CLI') {
-           git credentialsId: 'Github-prabinovich', url: 'https://github.com/prabinovich/CAST-Jenkins-Pipeline.git'
-        }
-        dir('Webstore') {
-           git credentialsId: 'Github-prabinovich', url: 'https://github.com/prabinovich/WebStore.git'
-        }
-
-        echo '-- Packaging and Delivery of Source Code --'
-        //bat '%WORKSPACE%\\CLI-Scripts\\CMS_AutomateDelivery.bat "profile=sandbox802" "app=SmallFibonacci" "fromVersion=v1" "version=version %BUILD_NUMBER%"'
-
-        echo '-- Analyze Application --'
-        //bat '%WORKSPACE%\\CLI-Scripts\\CMS_Analyze.bat "profile=sandbox802" "app=SmallFibonacci"'
-
-        echo '-- Generate Snapshot --'
-        //bat '%WORKSPACE%\\CLI-Scripts\\CMS_GenerateSnapshot.bat "profile=sandbox802" "app=SmallFibonacci" "version=version %BUILD_NUMBER%"'
-    }
-}*/
-
-
 node ('Build-Deploy-Box') {
     stage ('Build Application'){
            git credentialsId: 'Github-prabinovich', url: 'https://github.com/prabinovich/WebStore.git'
            // Compile project
            sh 'javac ./src/store/*.java -classpath "./libs/*" -d build/classes'
           }
+}
+
+node ('CAST-Analysis-Server') {
+    stage ('CAST - Code Packaging') {
+        dir ('CAST-CLI') {
+           git credentialsId: 'Github-prabinovich', url: 'https://github.com/prabinovich/CAST-Jenkins-Pipeline.git'
+        }
+        dir('Webstore') {
+           git credentialsId: 'Github-prabinovich', url: 'https://github.com/prabinovich/WebStore.git'
+        }
+        echo '-- Packaging and Delivery of Source Code --'
+        bat '%WORKSPACE%\\CAST-CLI\\CLI-Scripts\\CMS_AutomateDelivery.bat "profile=sandbox826" "app=Webstore" "fromVersion=Baseline" "version=version %BUILD_NUMBER%"'
+    }
+    stage ('CAST - Analysis') {
+        echo '-- Analyze Application --'
+        bat '%WORKSPACE%\\CAST-CLI\\CLI-Scripts\\CMS_Analyze.bat "profile=sandbox826" "app=Webstore"'
+    }
+    stage ('CAST - Snapshot') {
+        echo '-- Generate Snapshot --'
+        bat '%WORKSPACE%\\CAST-CLI\\CLI-Scripts\\CMS_GenerateSnapshot.bat "profile=sandbox826" "app=Webstore" "version=version %BUILD_NUMBER%"'
+    }
+}
+
+node ('Build-Deploy-Box') {
     stage ('Package Application'){
 			   // Organize web project
 			   sh 'rm -rf ./Deploy'
@@ -53,7 +56,6 @@ node ('Build-Deploy-Box') {
 	          sh 'mysql -u root webstore -e "create user \'appuser\'@\'localhost\' identified by \'Password1234%\'"'
 	          sh 'mysql -u root webstore -e "grant all privileges on webstore.* to appuser@localhost"'
 	      }
-
 }
 
 
