@@ -6,6 +6,13 @@ node ('Build-Deploy-Box') {
           }
 }
 
+node ('master'){
+    stage ('CAST - Check Results'){
+		git credentialsId: 'Github-prabinovich', url: 'https://github.com/prabinovich/CAST-Jenkins-Pipeline.git'               
+    }
+}
+
+
 node ('CAST-Analysis-Server') {
     stage ('CAST - Code Packaging') {
         dir ('CAST-CLI') {
@@ -30,13 +37,6 @@ node ('CAST-Analysis-Server') {
     	echo 'to-do'
     }
 }
-
-node ('master'){
-    stage ('CAST - Check Results'){
-		git credentialsId: 'Github-prabinovich', url: 'https://github.com/prabinovich/CAST-Jenkins-Pipeline.git'               
-    }
-}
-
 
 node ('Build-Deploy-Box') {
     stage ('Package Application'){
