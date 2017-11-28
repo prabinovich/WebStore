@@ -46,15 +46,15 @@ node ('Build-Deploy-Box') {
 			   sh 'sudo cp -f ./Deploy/WebStore.war /var/lib/tomcat7/webapps'
 	      }
 	stage ('Deploy Database'){
-	          sh 'mysqladmin --defaults-file=~/.my.cnf -u root flush-logs drop -f webstore || true'
+	          sh 'mysqladmin --defaults-file=/ubuntu/home/.my.cnf -u root flush-logs drop -f webstore || true'
 	          //sh 'sudo service mysql restart'
-	          sh 'mysqladmin --defaults-file=~/.my.cnf -u root flush-logs create webstore'
-	          sh 'mysql -u root webstore -e "use webstore; SET autocommit=0 ; source ./db/webstore_ddls.sql ; COMMIT;"'
-	          sh 'mysql -u root webstore -e "use webstore; SET autocommit=0 ; source ./db/webstore_data.sql ; COMMIT;"'
+	          sh 'mysqladmin --defaults-file=/ubuntu/home/.my.cnf -u root flush-logs create webstore'
+	          sh 'mysql --defaults-file=/ubuntu/home/.my.cnf -u root webstore -e "use webstore; SET autocommit=0 ; source ./db/webstore_ddls.sql ; COMMIT;"'
+	          sh 'mysql --defaults-file=/ubuntu/home/.my.cnf -u root webstore -e "use webstore; SET autocommit=0 ; source ./db/webstore_data.sql ; COMMIT;"'
 	          // Create application user
-	          sh 'mysql -u root webstore -e "drop user if exists \'appuser\'@\'localhost\'"'
-	          sh 'mysql -u root webstore -e "create user \'appuser\'@\'localhost\' identified by \'Password1234%\'"'
-	          sh 'mysql -u root webstore -e "grant all privileges on webstore.* to appuser@localhost"'
+	          sh 'mysql --defaults-file=/ubuntu/home/.my.cnf -u root webstore -e "drop user if exists \'appuser\'@\'localhost\'"'
+	          sh 'mysql --defaults-file=/ubuntu/home/.my.cnf -u root webstore -e "create user \'appuser\'@\'localhost\' identified by \'Password1234%\'"'
+	          sh 'mysql --defaults-file=/ubuntu/home/.my.cnf -u root webstore -e "grant all privileges on webstore.* to appuser@localhost"'
 	      }
 }
 
