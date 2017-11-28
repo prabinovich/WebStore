@@ -8,6 +8,11 @@
 <title>Student Store</title>
 </head>
 <body>
+	<% if ((session.getAttribute("username") == null) || (session.getAttribute("username") == "")) { %>
+       You are not logged in<br/>
+       <a href="login.jsp">Please Login</a>
+    <%} else { %>
+       Welcome <%=session.getAttribute("username")%>
 	<h1>Student Store</h1>
 	<p>
 		Items available:
@@ -19,5 +24,7 @@
 		<li><a href="show-product.jsp?id=<%=list.get(i).getID() %>"><%= list.get(i).getName() %></a></li>
 		<% } %>
 	</ul>
+	<%}%>
+	<%@ include file="footer.jsp" %>
 </body>
 </html>
