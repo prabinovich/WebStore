@@ -6,6 +6,7 @@ node ('Build-Deploy-Box') {
           }
 }
 
+/*
 node ('CAST-Analysis-Server') {
     stage ('CAST - Code Packaging') {
         dir ('CAST-CLI') {
@@ -25,11 +26,7 @@ node ('CAST-Analysis-Server') {
         echo '-- Generate Snapshot --'
         bat '%WORKSPACE%\\CAST-CLI\\CLI-Scripts\\CMS_GenerateSnapshot.bat "profile=sandbox826" "app=Webstore" "version=version %BUILD_NUMBER%"'
     }
-    /*stage ('CAST - Update AAD') {
-    	echo '-- Publish Snapshot --'
-    	echo 'to-do'
-    }*/
-}
+}*/
 
 node ('CAST-Web-Server') {
     stage ('Refresh CAST AAD'){
