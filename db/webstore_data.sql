@@ -11,3 +11,6 @@ INSERT INTO `products` (`productid`,`name`,`imagefile`,`price`) VALUES (4,'Hoodi
 INSERT INTO `products` (`productid`,`name`,`imagefile`,`price`) VALUES (5,'Keychain','Keychain.jpg',3);
 INSERT INTO `products` (`productid`,`name`,`imagefile`,`price`) VALUES (6,'Lanyard','Lanyard.jpg',2);
 INSERT INTO `products` (`productid`,`name`,`imagefile`,`price`) VALUES (7,'Thermos','Thermos.jpg',35);
+
+INSERT INTO `users` VALUES (null, 'pavel', '1234'); 
+INSERT INTO `users` VALUES (null, 'john', 'passw0rd');

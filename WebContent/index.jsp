@@ -7,8 +7,9 @@
 <title>Webstore</title>
 </head>
 <body>
-<h1>Welcome to webstore v1.7</h1>
+<h1>Welcome to Webstore</h1>
 <p>
-<a href="store.jsp">Start shopping</a>
+<a href="store.jsp">Happy shopping</a>
+<%@ include file="footer.jsp" %> 
 </body>
 </html>

@@ -26,5 +26,6 @@
 	</table>
 	<input type="hidden" name="id" value="<%= p.getID() %>"/>
 	</form>
+	<%@ include file="footer.jsp" %>  
 </body>
 </html>

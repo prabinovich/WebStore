@@ -63,5 +63,6 @@
 	<p>
 	<a href="store.jsp">Continue Shopping</a>
 	</p>
+	<%@ include file="footer.jsp" %>
 </body>
 </html>
