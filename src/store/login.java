@@ -23,10 +23,10 @@ public class login extends HttpServlet {
         PrintWriter out = response.getWriter();
         try {
             String username = request.getParameter("username");
-            username = SanitizationUtils.validateInput(username);
+            //username = SanitizationUtils.validateInput(username);
             
             String password = request.getParameter("password");
-            password = SanitizationUtils.validateInput(password);
+            //password = SanitizationUtils.validateInput(password);
             
             try {
             	DBConnection db = new DBConnection();
