@@ -1,6 +1,5 @@
 package store;
 
-@SuppressWarnings("deprecation")
 public class SanitizationUtils {
 	
 	public static String validateInput(String s)

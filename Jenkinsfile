@@ -31,6 +31,13 @@ node ('CAST-Analysis-Server') {
     }
 }
 
+node ('master'){
+    stage ('CAST - Check Results'){
+		git credentialsId: 'Github-prabinovich', url: 'https://github.com/prabinovich/CAST-Jenkins-Pipeline.git'               
+    }
+}
+
+
 node ('Build-Deploy-Box') {
     stage ('Package Application'){
 			   // Organize web project
