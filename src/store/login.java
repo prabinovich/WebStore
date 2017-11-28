@@ -23,23 +23,31 @@ public class login extends HttpServlet {
         PrintWriter out = response.getWriter();
         try {
             String username = request.getParameter("username");
-            String password = request.getParameter("password");
+            username = SanitizationUtils.validateInput(username);
+            if (username == ""){
+                out.println("Invalid username format");
+                out.println("<p>");
+                out.println("<a href=\"login.jsp\">Login again</a>");
+            }
+            else {
+            	String password = request.getParameter("password");
 
-            try {
-            	DBConnection db = new DBConnection();
-        		ResultSet rs = db.checkUserLogin(username, password);
+                try {
+                	DBConnection db = new DBConnection();
+            		ResultSet rs = db.checkUserLogin(username, password);
 
-                if (rs.next()) {
-                    HttpSession session = request.getSession();
-                    session.setAttribute("username", username);
-                    response.sendRedirect("store.jsp");
-                } else {
-                    out.println("Invalid username and/or password");
-                    out.println("<p>");
-                    out.println("<a href=\"login.jsp\">Login again</a>");
+                    if (rs.next()) {
+                        HttpSession session = request.getSession();
+                        session.setAttribute("username", username);
+                        response.sendRedirect("store.jsp");
+                    } else {
+                        out.println("Invalid username and/or password");
+                        out.println("<p>");
+                        out.println("<a href=\"login.jsp\">Login again</a>");
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
             }
         } finally {
             out.close();
