@@ -25,6 +25,10 @@ node ('CAST-Analysis-Server') {
         echo '-- Generate Snapshot --'
         bat '%WORKSPACE%\\CAST-CLI\\CLI-Scripts\\CMS_GenerateSnapshot.bat "profile=sandbox826" "app=Webstore" "version=version %BUILD_NUMBER%"'
     }
+    stage ('CAST - Update AAD') {
+    	echo '-- Publish Snapshot --'
+    	echo 'to-do'
+    }
 }
 
 node ('Build-Deploy-Box') {
@@ -58,6 +62,13 @@ node ('Build-Deploy-Box') {
 	      }
 }
 
+
+
+node ('CAST-Web-Server') {
+    stage ('Refresh CAST AAD'){
+    	sh 'sudo systemctl restart tomcat'
+    }
+}
 
 /*
 node ('Docker-Build-Box') {
