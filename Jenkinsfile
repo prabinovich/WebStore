@@ -25,9 +25,15 @@ node ('CAST-Analysis-Server') {
         echo '-- Generate Snapshot --'
         bat '%WORKSPACE%\\CAST-CLI\\CLI-Scripts\\CMS_GenerateSnapshot.bat "profile=sandbox826" "app=Webstore" "version=version %BUILD_NUMBER%"'
     }
-    stage ('CAST - Update AAD') {
+    /*stage ('CAST - Update AAD') {
     	echo '-- Publish Snapshot --'
     	echo 'to-do'
+    }*/
+}
+
+node ('CAST-Web-Server') {
+    stage ('Refresh CAST AAD'){
+    	sh 'sudo systemctl restart tomcat'
     }
 }
 
@@ -67,14 +73,6 @@ node ('Build-Deploy-Box') {
 	          sh 'mysql --defaults-file=/home/ubuntu/.my.cnf -u root webstore -e "create user \'appuser\'@\'localhost\' identified by \'Password1234%\'"'
 	          sh 'mysql --defaults-file=/home/ubuntu/.my.cnf -u root webstore -e "grant all privileges on webstore.* to appuser@localhost"'
 	      }
-}
-
-
-
-node ('CAST-Web-Server') {
-    stage ('Refresh CAST AAD'){
-    	sh 'sudo systemctl restart tomcat'
-    }
 }
 
 /*
