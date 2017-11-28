@@ -6,13 +6,6 @@ node ('Build-Deploy-Box') {
           }
 }
 
-node ('master'){
-    stage ('CAST - Check Results'){
-		git credentialsId: 'Github-prabinovich', url: 'https://github.com/prabinovich/CAST-Jenkins-Pipeline.git'               
-    }
-}
-
-
 node ('CAST-Analysis-Server') {
     stage ('CAST - Code Packaging') {
         dir ('CAST-CLI') {
@@ -35,6 +28,13 @@ node ('CAST-Analysis-Server') {
     stage ('CAST - Update AAD') {
     	echo '-- Publish Snapshot --'
     	echo 'to-do'
+    }
+}
+
+node ('master'){
+    stage ('CAST - Check Results'){
+		git credentialsId: 'Github-prabinovich', url: 'https://github.com/prabinovich/CAST-Jenkins-Pipeline.git'
+		sh 'python3 ./RestAPI/BlockCheck5.py --appname=Webstore'
     }
 }
 
