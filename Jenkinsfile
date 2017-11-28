@@ -15,7 +15,7 @@ node ('CAST-Analysis-Server') {
            git credentialsId: 'Github-prabinovich', url: 'https://github.com/prabinovich/WebStore.git'
         }
         echo '-- Packaging and Delivery of Source Code --'
-        bat '%WORKSPACE%\\CAST-CLI\\CLI-Scripts\\CMS_AutomateDelivery.bat "profile=sandbox826" "app=Webstore" "fromVersion=Baseline" "version=version %BUILD_NUMBER%"'
+        bat '%WORKSPACE%\\CAST-CLI\\CLI-Scripts\\CMS_AutomateDelivery.bat "profile=sandbox826" "app=Webstore" "fromVersion=Package_v2" "version=version %BUILD_NUMBER%"'
     }
     stage ('CAST - Analysis') {
         echo '-- Analyze Application --'
