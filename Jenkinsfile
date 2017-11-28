@@ -36,7 +36,7 @@ node ('CAST-Web-Server') {
 
 node ('master'){
     stage ('CAST - Check Results'){
-		git credentialsId: 'Github-prabinovich', url: 'https://github.com/prabinovich/CAST-Jenkins-Pipeline.git'
+		//git credentialsId: 'Github-prabinovich', url: 'https://github.com/prabinovich/CAST-Jenkins-Pipeline.git'
 		sh 'python3 ./RestAPI/BlockCheck5.py --connection=http://34.205.9.185:8080/CAST-AAD-AED/rest --username=cast --password=cast --appname=Webstore'
     }
 }
