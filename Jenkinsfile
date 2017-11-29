@@ -6,7 +6,6 @@ node ('Build-Deploy-Box') {
           }
 }
 
-/*
 node ('CAST-Analysis-Server') {
     stage ('CAST - Code Packaging') {
         dir ('CAST-CLI') {
@@ -39,7 +38,7 @@ node ('master'){
 		git credentialsId: 'Github-prabinovich', url: 'https://github.com/prabinovich/CAST-Jenkins-Pipeline.git'
 		sh 'python3 ./RestAPI/BlockCheck5.py --connection=http://34.205.9.185:8080/CAST-AAD-AED/rest --username=cast --password=cast --appname=Webstore'
     }
-}*/
+}
 
 node ('Build-Deploy-Box') {
     stage ('Package Application'){
