@@ -6,7 +6,6 @@ node ('Build-Deploy-Box') {
           }
 }
 
-/*
 node ('CAST-Analysis-Server') {
     stage ('CAST - Code Packaging') {
         dir ('CAST-CLI') {
@@ -26,10 +25,10 @@ node ('CAST-Analysis-Server') {
         echo '-- Generate Snapshot --'
         bat '%WORKSPACE%\\CAST-CLI\\CLI-Scripts\\CMS_GenerateSnapshot.bat "profile=sandbox826" "app=Webstore" "version=version %BUILD_NUMBER%"'
     }
-}*/
+}
 
 node ('CAST-Web-Server') {
-    stage ('Refresh CAST AAD'){
+    stage ('CAST - Refresh AAD'){
     	sh 'sudo systemctl restart tomcat'
     }
 }
