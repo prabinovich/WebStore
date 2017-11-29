@@ -9,7 +9,7 @@ node ('Build-Deploy-Box') {
 node ('CAST-Analysis-Server') {
     stage ('CAST - Code Packaging') {
         dir ('CAST-CLI') {
-           git branch: 'CAST_8.0', credentialsId: 'Github-prabinovich', url: 'https://github.com/prabinovich/CAST-Jenkins-Pipeline.git'
+           git branch: 'master', credentialsId: 'Github-prabinovich', url: 'https://github.com/prabinovich/CAST-Jenkins-Pipeline.git'
         }
         dir('Webstore') {
            git credentialsId: 'Github-prabinovich', url: 'https://github.com/prabinovich/WebStore.git'
