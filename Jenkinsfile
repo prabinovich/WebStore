@@ -15,9 +15,8 @@ node ('CAST-Analysis-Server') {
            git credentialsId: 'Github-prabinovich', url: 'https://github.com/prabinovich/WebStore.git'
         }
         echo '-- Packaging and Delivery of Source Code --'
-        //bat '%WORKSPACE%\\CAST-CLI\\CLI-Scripts\\CMS_AutomateDelivery.bat "profile=sandbox826" "app=Webstore" "fromVersion=Package_v2" "version=version %BUILD_NUMBER%"'
+        bat '%WORKSPACE%\\CAST-CLI\\CLI-Scripts\\CMS_AutomateDelivery.bat "profile=sandbox826" "app=Webstore" "fromVersion=Package_v2" "version=version %BUILD_NUMBER%"'
     }
-}/*
     stage ('CAST - Analysis') {
         echo '-- Analyze Application --'
         bat '%WORKSPACE%\\CAST-CLI\\CLI-Scripts\\CMS_Analyze.bat "profile=sandbox826" "app=Webstore"'
@@ -27,7 +26,6 @@ node ('CAST-Analysis-Server') {
         bat '%WORKSPACE%\\CAST-CLI\\CLI-Scripts\\CMS_GenerateSnapshot.bat "profile=sandbox826" "app=Webstore" "version=version %BUILD_NUMBER%"'
     }
 }
-*/
 
 node ('CAST-Web-Server') {
     stage ('CAST - Refresh AAD'){
