@@ -21,9 +21,6 @@ public class logout extends HttpServlet {
         try {
         		HttpSession session = request.getSession();
         		
-        		DBConnection db = new DBConnection();
-        		ResultSet rs = db.checkUserLogin(session.getAttribute("username").toString(), "");
-        		
                 session.setAttribute("username", null);
                 response.sendRedirect("index.jsp");
                 
