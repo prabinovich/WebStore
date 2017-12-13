@@ -1,6 +1,7 @@
 package store;
 
 import java.io.IOException;
+import java.sql.ResultSet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,7 +19,11 @@ public class logout extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         try {
-                HttpSession session = request.getSession();
+        		HttpSession session = request.getSession();
+        		
+        		DBConnection db = new DBConnection();
+        		ResultSet rs = db.checkUserLogin(session.getAttribute("username").toString(), "");
+        		
                 session.setAttribute("username", null);
                 response.sendRedirect("index.jsp");
                 
