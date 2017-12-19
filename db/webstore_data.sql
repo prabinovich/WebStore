@@ -1,3 +1,5 @@
+use webstore;
+
 /*
 -- Query: SELECT * FROM webstore.products
 LIMIT 0, 1000
