@@ -24,6 +24,7 @@ public class login extends HttpServlet {
         try {
             String username = request.getParameter("username");
             username = SanitizationUtils.validateInput(username);
+            // empty comment
             
             String password = request.getParameter("password");
             password = SanitizationUtils.validateInput(password);
