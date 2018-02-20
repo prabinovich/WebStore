@@ -1,6 +1,6 @@
 <p>
 <hr>
-Application version 1.14 ; 
+Application version 1.15 ; 
 <% if ((session.getAttribute("username") == null) || (session.getAttribute("username") == "")) { %>
 Not logged in. <a href="login.jsp">login now</a>
 <%} else { %>
