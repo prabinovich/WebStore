@@ -28,5 +28,6 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="libs/cache4j/cache4j_0.4.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

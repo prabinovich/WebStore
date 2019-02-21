@@ -2,16 +2,14 @@ package store;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-
 import java.sql.ResultSet;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
+import javax.crypto.*;
 
 @SuppressWarnings("serial")
 @WebServlet(name = "login", urlPatterns = {"/login"})
@@ -23,10 +21,10 @@ public class login extends HttpServlet {
         PrintWriter out = response.getWriter();
         try {
             String username = request.getParameter("username");
-            username = SanitizationUtils.validateInput(username);
+            //username = SanitizationUtils.validateInput(username);
             
             String password = request.getParameter("password");
-            password = SanitizationUtils.validateInput(password);
+            //password = SanitizationUtils.validateInput(password);
             
             try {
             	DBConnection db = new DBConnection();
