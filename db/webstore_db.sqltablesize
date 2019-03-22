@@ -1,0 +1,4 @@
+xxl_threshold=1000
+xxs_threshold=10
+
+WEBGOAT_guest.EMPLOYEE=2000000000
